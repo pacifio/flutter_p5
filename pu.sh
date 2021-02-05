@@ -1,0 +1,1 @@
+git add . && git commit -am "Updated code" &&  git push -u origin master
