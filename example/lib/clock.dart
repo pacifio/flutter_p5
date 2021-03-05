@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_p5/flutter_p5.dart';
 
-class P5Clock extends StatefulWidget {
-  P5Clock({Key key}) : super(key: key);
+class Clock extends StatefulWidget {
+  Clock({Key key}) : super(key: key);
 
   @override
-  _P5ClockState createState() => _P5ClockState();
+  _ClockState createState() => _ClockState();
 }
 
-class _P5ClockState extends State<P5Clock> {
+class _ClockState extends State<Clock> {
   Sketch sketch = Sketch();
 
   @override
@@ -16,7 +16,7 @@ class _P5ClockState extends State<P5Clock> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("P5 Example"),
+        title: Text("Animated clock"),
         elevation: 0.0,
         centerTitle: true,
       ),

@@ -1,4 +1,4 @@
-import 'package:example/p5_clock.dart';
+import 'home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +12,6 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
-        home: P5Clock());
+        home: HomeScreen());
   }
 }
