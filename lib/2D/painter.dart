@@ -1,7 +1,7 @@
 library p5_painter;
 
 import 'dart:typed_data';
-import 'dart:ui';
+import 'dart:ui' as ui;
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -327,7 +327,7 @@ class P5Painter extends ChangeNotifier implements CustomPainter {
   void point(double x, double y) {
     if (useStroke) {
       var points = [new Offset(x, y)];
-      canvas.drawPoints(PointMode.points, points, strokePaint);
+      canvas.drawPoints(ui.PointMode.points, points, strokePaint);
     }
   }
 
@@ -389,9 +389,9 @@ class P5Painter extends ChangeNotifier implements CustomPainter {
         }
         var raw = Float32List.fromList(vlist);
         if (shapeMode == P5Constants.POINTS) {
-          canvas.drawRawPoints(PointMode.points, raw, strokePaint);
+          canvas.drawRawPoints(ui.PointMode.points, raw, strokePaint);
         } else {
-          canvas.drawRawPoints(PointMode.lines, raw, strokePaint);
+          canvas.drawRawPoints(ui.PointMode.lines, raw, strokePaint);
         }
       } else {
         path.reset();
