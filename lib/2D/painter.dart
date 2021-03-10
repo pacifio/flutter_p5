@@ -522,5 +522,13 @@ class P5Painter extends ChangeNotifier implements CustomPainter {
     return DateTime.now().second;
   }
 
+  int randomInt([int min = 0, int max]) {
+    return min + math.Random().nextInt(max);
+  }
+
+  double randomDouble([int min = 0, int max]) {
+    return min + math.Random().nextInt(max).toDouble();
+  }
+
   /// Utility API END
 }

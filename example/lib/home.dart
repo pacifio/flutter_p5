@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'clock.dart';
 import 'painter.dart';
+import 'stars.dart';
 
 void pushPage(BuildContext context, Widget page) {
   Navigator.of(context).pop();
@@ -29,6 +30,10 @@ class HomeScreen extends StatelessWidget {
             ListTile(
               title: Text("Canvas painter"),
               onTap: () => pushPage(context, Painter()),
+            ),
+            ListTile(
+              title: Text("Stars"),
+              onTap: () => pushPage(context, Stars()),
             )
           ],
         ),
