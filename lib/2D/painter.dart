@@ -466,11 +466,19 @@ class P5Painter extends ChangeNotifier implements CustomPainter {
   }
 
   /// Displays a box on the canvas
+  /// Pass in the appropiate `x` , `y` cordinate
+  /// `z` argument stands for depth , by default it's `300`
+  /// `size` is the size of the box
+  /// `rotateX` and `rotateY` rotates the box on the respective axis
   void box({
+    double x = 0,
+    double y = 0,
+    double z = 300,
+    double size = 200,
     double rotateX,
     double rotateY,
   }) {
-    var cube = Cube(x: 0, y: 0, z: 300, size: 200);
+    var cube = Cube(x: x, y: y, z: z, size: size);
 
     List<P5Vector> project(List<P5Vector> points3D) {
       List<P5Vector> point2d = List.generate(points3D.length, (index) => null);
