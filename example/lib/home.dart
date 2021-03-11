@@ -1,12 +1,39 @@
+import 'package:example/menger_sponge.dart';
 import 'package:flutter/material.dart';
 
 import 'clock.dart';
 import 'painter.dart';
 import 'stars.dart';
+import '3d_cube.dart';
 
 void pushPage(BuildContext context, Widget page) {
   Navigator.of(context).pop();
   Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
+}
+
+List<Widget> _screens(BuildContext context) {
+  return [
+    ListTile(
+      title: Text("Animated clock"),
+      onTap: () => pushPage(context, Clock()),
+    ),
+    ListTile(
+      title: Text("Canvas painter"),
+      onTap: () => pushPage(context, Painter()),
+    ),
+    ListTile(
+      title: Text("Stars"),
+      onTap: () => pushPage(context, Stars()),
+    ),
+    ListTile(
+      title: Text("3D cube"),
+      onTap: () => pushPage(context, ThreeDCube()),
+    ),
+    ListTile(
+      title: Text("Menger sponge"),
+      onTap: () => pushPage(context, MengerSponge()),
+    )
+  ];
 }
 
 class HomeScreen extends StatelessWidget {
@@ -21,23 +48,13 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
       ),
       drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              title: Text("Animated clock"),
-              onTap: () => pushPage(context, Clock()),
-            ),
-            ListTile(
-              title: Text("Canvas painter"),
-              onTap: () => pushPage(context, Painter()),
-            ),
-            ListTile(
-              title: Text("Stars"),
-              onTap: () => pushPage(context, Stars()),
-            )
-          ],
-        ),
-      ),
+          child: ListView.separated(
+        itemBuilder: (context, index) {
+          return _screens(context)[index];
+        },
+        itemCount: _screens(context).length,
+        separatorBuilder: (context, index) => Divider(),
+      )),
       body: Container(
           padding: EdgeInsets.all(16.0),
           child: Column(

@@ -6,18 +6,13 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
+import 'package:flutter_p5/3D/cube.dart';
+import 'package:flutter_p5/math/vector.dart';
 import 'package:flutter_p5/types/arc_types.dart';
 import 'package:flutter_p5/constants/constants.dart';
 
 /// Main implementation for the `P5Painter` class
 /// This single handedly functions all `2D` drawing operations
-///
-/// Internally the native flutter's canvas system has been used to paint `2D` shapes
-/// A plan for `3D` graphics has been made using the `Texture`
-/// Since the engine used by flutter / `Skia` engine is only built for `2D` rendering so possibility to bring in `3D` is low
-///
-/// `P5Painter` uses `ChangeNotifier` to send notifications to the `P5Animator`
-/// to allow the `P5Applet` class to redraw on each `Canvas` update
 ///
 /// Example
 /// ```
@@ -470,6 +465,50 @@ class P5Painter extends ChangeNotifier implements CustomPainter {
                 (paintSize.height - textPainter.height) * .5));
   }
 
+  /// Displays a box on the canvas
+  void box({
+    double rotateX,
+    double rotateY,
+  }) {
+    var cube = Cube(x: 0, y: 0, z: 300, size: 200);
+
+    List<P5Vector> project(List<P5Vector> points3D) {
+      List<P5Vector> point2d = List.generate(points3D.length, (index) => null);
+      int focalPoint = 200;
+      for (var i = 0; i < points3D.length; i++) {
+        var p = points3D[i];
+        var x = p.x * (focalPoint / p.z) + width * .5;
+        var y = p.y * (focalPoint / p.z) + height * .5;
+
+        point2d[i] = P5Vector(x, y);
+      }
+
+      return point2d;
+    }
+
+    if (rotateX != null) {
+      cube.rotateX(radians(rotateX));
+    }
+
+    if (rotateY != null) {
+      cube.rotateY(radians(rotateY));
+    }
+
+    var _vertices = project(cube.vertices);
+
+    for (var i = 0; i < cube.faces.length; i++) {
+      var face = cube.faces[i];
+      beginShape();
+      line(_vertices[face[0]].x, _vertices[face[0]].y, _vertices[face[1]].x,
+          _vertices[face[1]].y);
+      line(_vertices[face[1]].x, _vertices[face[1]].y, _vertices[face[2]].x,
+          _vertices[face[2]].y);
+      line(_vertices[face[2]].x, _vertices[face[2]].y, _vertices[face[3]].x,
+          _vertices[face[3]].y);
+      endShape();
+    }
+  }
+
   /// Draws an arc on the screen
   ///
   /// `P5ArcType` is set to `P5ArcType.NORMAL` by default
@@ -523,10 +562,16 @@ class P5Painter extends ChangeNotifier implements CustomPainter {
   }
 
   int randomInt([int min = 0, int max]) {
+    if (max == null) {
+      return min + math.Random().nextInt(100);
+    }
     return min + math.Random().nextInt(max);
   }
 
   double randomDouble([int min = 0, int max]) {
+    if (max == null) {
+      return min + math.Random().nextDouble();
+    }
     return min + math.Random().nextInt(max).toDouble();
   }
 
