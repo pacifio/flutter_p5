@@ -550,6 +550,17 @@ class P5Painter extends ChangeNotifier implements CustomPainter {
     return ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
   }
 
+  /// Calculate the distance of 2 vectors
+  /// [Only works with 2D vectors]
+  double dist(num x1, num y1, num x2, num y2) {
+    return this.hypotenuse(x2 - x1, y2 - y1);
+  }
+
+  /// Calculate the hypotenuse by the given X and Y cordinate
+  double hypotenuse(double x, double y) {
+    return math.sqrt(math.pow(x, 2) + math.pow(y, 2));
+  }
+
   /// Processing API END
 
   /// Utility API START

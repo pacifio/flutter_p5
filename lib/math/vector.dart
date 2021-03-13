@@ -56,6 +56,17 @@ class P5Vector {
 
     return this;
   }
+
+  num magSq() {
+    final x = this.x;
+    final y = this.y;
+    final z = this.z;
+    return x * x + y * y + z * z;
+  }
+
+  num mag() {
+    return math.sqrt(this.magSq());
+  }
 }
 
 class P5VectorUtils {

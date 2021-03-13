@@ -1,3 +1,4 @@
+import 'package:example/delaunay_experiment.dart';
 import 'package:example/menger_sponge.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,10 @@ List<Widget> _screens(BuildContext context) {
     ListTile(
       title: Text("Menger sponge"),
       onTap: () => pushPage(context, MengerSponge()),
+    ),
+    ListTile(
+      title: Text("Delaunay experiment"),
+      onTap: () => pushPage(context, DelaunayExperiment()),
     )
   ];
 }

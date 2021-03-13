@@ -18,8 +18,9 @@ See [examples](https://github.com/pacifio/flutter_p5/blob/master/example/lib/) t
 | Example name   | Code link                                                                          | Preview link                                   |
 |----------------|------------------------------------------------------------------------------------|------------------------------------------------|
 | Animated clock | [link](https://github.com/pacifio/flutter_p5/blob/master/example/lib/clock.dart)   | <img src="./media/clock.gif" height="200" />   |
+| Delaunay experiment | [link](https://github.com/pacifio/flutter_p5/blob/master/example/lib/delaunay_experiment.dart)   | <img src="./media/delaunay.gif" height="200" />   |
 | 3D cube | [link](https://github.com/pacifio/flutter_p5/blob/master/example/lib/3d_cube.dart)   | <img src="./media/cube.gif" height="200" />   |
-| Menger Sponge (try) | [link](https://github.com/pacifio/flutter_p5/blob/master/example/lib/menger_sponge.dart)   | <img src="./media/menger.gif" height="200" />   |
+| Menger Sponge | [link](https://github.com/pacifio/flutter_p5/blob/master/example/lib/menger_sponge.dart)   | <img src="./media/menger.gif" height="200" />   |
 | Stars | [link](https://github.com/pacifio/flutter_p5/blob/master/example/lib/stars.dart)   | <img src="./media/stars.gif" height="200" />   |
 | Canvas painter | [link](https://github.com/pacifio/flutter_p5/blob/master/example/lib/painter.dart) | <img src="./media/painter.gif" height="200" /> |
 |                |                                                                                    |                                                |
